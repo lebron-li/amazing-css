@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+            ease：默认值，动画以低速开始，然后加快，最后低速结束。
+            ease-out：动画以高速开始，以低速结束。
+            ease-in：动画以低速开始，以高速结束。
+            linear：动画从头到尾的速度是相同的。
+        */
+        .neon {
+            font-size: 60px;
+            text-shadow: 0 0 3vw #F4BD0A;
+            animation: neon 2s ease-in-out infinite;
+        }
+        .flux {
+            font-size: 60px;
+            text-shadow: 0 0 3vw #179E05;
+            animation: flux 2s linear infinite;
+        }
+        @keyframes neon {
+            /* text-shadow: offset-x | offset-y | blur-radius | color */
+            0%, 100% {
+                text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+                color: #FFFC00;
+            }
+            50% {
+                text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+                color: #806914;
+            }
+        }
+        @keyframes flux {
+            0%, 100% {
+                text-shadow: 0 0 1vw #10ff4c, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+                color: #03C03C;
+            }
+            50% {
+                text-shadow: 0 0 .5vw #024218, 0 0 1.5vw #024713, 0 0 5vw #023812, 0 0 5vw #012707, 0 0 .2vw #022201, .5vw .5vw .1vw #011a06;
+                color: #179E05;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon">CYBER</div>
+    <div class="flux">PUNK</div>
+</body>
+</html>
