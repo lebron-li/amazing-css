@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blur-Hover</title>
+    <style>
+        *{
+            margin: 0;
+            border: 0;
+        }
+        /*
+             这里不能将滤镜直接加在.card元素，而是将背景和滤镜都加在伪类上。
+             因为，父元素加了滤镜，它的子元素都会一起由该滤镜改变。
+             如果滤镜直接加在.card元素上，会导致上面的文字也变模糊。
+        */
+        /*.card{*/
+        /*    display: inline-block;*/
+        /*    background: url('src/葫芦娃.jpg') no-repeat;*/
+        /*    background-size: 100%, 100%;*/
+        /*    height: 300px;*/
+        /*    width: 600px;*/
+        /*}*/
+        .card:before {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 20px;
+            filter: blur(0px) opacity(1);
+            transition: filter 200ms linear, transform 200ms linear;
+            height: 300px;
+            width: 600px;
+            background: url('src/葫芦娃.jpg') no-repeat;
+            background-size: 100%, 100%;
+        }
+
+        .card:hover:before {
+            filter: saturate(1.2);
+            transform: scale(1.05);
+        }
+
+
+
+        /*通过css选择器选出非hover的.card元素，给其伪类添加模糊、透明度和明暗度的滤镜*/
+
+        .cards:hover > .card:not(:hover):before {
+            filter: blur(5px) opacity(0.8) brightness(0.8);
+        }
+
+        /*对于hover的元素，其伪类增强饱和度，尺寸放大*/
+
+
+    </style>
+</head>
+<body>
+<ul class="cards">
+    <li class="card">
+        <p class="title">Flower</p>
+        <p class="content">The flowers mingle to form a blaze of color.</p>
+    </li>
+<!--    <li class="card">-->
+<!--        <p class="title">Sunset</p>-->
+<!--        <p class="content">The sunset glow tinted the sky red.</p>-->
+<!--    </li>-->
+<!--    <li class="card">-->
+<!--        <p class="title">Plain</p>-->
+<!--        <p class="content">The winds came from the north, across the plains, funnelling down the valley. </p>-->
+<!--    </li>-->
+</ul>
+
+</body>
+</html>
